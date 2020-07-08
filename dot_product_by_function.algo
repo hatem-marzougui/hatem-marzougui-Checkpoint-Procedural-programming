@@ -1,0 +1,35 @@
+//fonction qui calcule le produit scalaire de deux vecteurs
+FUNCTION dot_product(u1: ARRAY_OF INTEGER[], u2: ARRAY_OF INTEGER[] )   :INTEGER 
+ps:=0
+BEGIN
+  FOR i FROM 0 TO v_size STEP 1  DO
+    ps:=ps+u1[i]*u2[i]
+    RETURN ps
+END
+
+ALGORITHM orthogonal_vectors
+VAR v : ARRAY_OF INTEGER[50][50]; // une matrice qui contient tous les vecteurs
+VAR v_size,nb_vectors,resultat:=0 :INTEGER
+BEGIN
+    Write("enter number of vectors ")
+    Read (nb_vectors)
+    Write("enter size of vectors ")
+    Read (v_size)
+  
+   //i pour indiquer vecteurs  v1 ,v2 ,v3... et j  pour remplir les données du chaque vecteur 
+     FOR i FROM 1 TO nb_vectors STEP 1  DO
+         FOR j FROM 0 TO v_size -1 STEP 1  DO
+             Read(v[i][j])
+         END_FOR
+     END_FOR
+
+//pour i=1 on calcule v1.v2  ,pour i=3: on calcule v3.v4  , toujours un pas de 2
+FOR i FROM 1 TO nb_vectors STEP 2  DO
+    resultat:=dot_product(v[i],v[i+1])
+     IF (result=0) THEN
+        Write(v[i],v[i+1] ,"sont orthogonaux")
+    END_IF
+END_FOR
+END
+    
+   
